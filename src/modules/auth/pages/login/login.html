@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content" padding>
+    <div class="login-box">
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <ion-row>
+                <ion-col>
+                    <ion-list inset>
+
+                        <ion-item>
+                            <ion-input formControlName="email" class="form-control"
+                                       placeholder="Correo Electrónico"></ion-input>
+                        </ion-item>
+                        <control-message [control]="loginForm.controls.email"></control-message>
+
+                        <ion-item>
+                            <ion-input formControlName="password" placeholder="Contraseña" class="form-control"
+                                       type="password"></ion-input>
+                        </ion-item>
+                        <control-message [control]="loginForm.controls.password"></control-message>
+
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.valid">Iniciar
+                        Sesión
+                    </button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+    </div>
+</ion-content>
