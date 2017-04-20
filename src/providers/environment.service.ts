@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EnvironmentService {
 
-    public baseUrl = 'http://etrack.dev/api/';
+    public baseUrl = 'http://etrackapi.dncomputing.com/api/';
 
     constructor() {
 
