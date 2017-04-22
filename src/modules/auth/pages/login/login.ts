@@ -10,6 +10,9 @@ import {Storage} from '@ionic/storage';
 import {AdminIndexPage} from "../../../admin/pages/index/admin-index";
 import {ClientIndexPage} from "../../../client/pages/index/client-index";
 
+//Prueba mia
+import {AdminIndexMenuSidePage} from "../../../admin/pages/index2/admin-index-menu-side";
+
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html'
@@ -51,9 +54,10 @@ export class LoginPage {
                                 this.storage.set('permissions', JSON.stringify(user.permissions)).then(()=> {
                                     loading.dismiss();
                                     if (this.user['isSuperUser']) {
-                                        this.navCtrl.setRoot(AdminIndexPage);
+                                        this.navCtrl.setRoot(AdminIndexMenuSidePage);
                                     } else {
-                                        this.navCtrl.setRoot(ClientIndexPage);
+                                        console.log("por aqui")
+                                        this.navCtrl.setRoot(AdminIndexMenuSidePage); //preguntar
                                     }
                                 });
                             },

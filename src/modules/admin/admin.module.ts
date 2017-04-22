@@ -8,11 +8,14 @@ import {AdminCompaniesPage} from "./pages/companies/admin-companies";
 import {UserCanModule} from "../../directives/user-can/user-can.module";
 import {AdminMenuPage} from "./pages/menu/admin-menu";
 
+//mio
+import {AdminIndexMenuSidePage} from "./pages/index2/admin-index-menu-side";
+
 @NgModule({
     imports: [IonicModule, UserCanModule],
     providers: [AuthService, UserService],
-    declarations: [AdminIndexPage, AdminDashboardPage, AdminCompaniesPage, AdminMenuPage],
-    entryComponents: [AdminIndexPage, AdminDashboardPage, AdminCompaniesPage, AdminMenuPage],
+    declarations: [AdminIndexPage,AdminIndexMenuSidePage, AdminDashboardPage, AdminCompaniesPage, AdminMenuPage],
+    entryComponents: [AdminIndexPage,AdminIndexMenuSidePage, AdminDashboardPage, AdminCompaniesPage, AdminMenuPage],
 })
 export class AdminModule {
 }

@@ -8,6 +8,8 @@ import {ClientIndexPage} from "../modules/client/pages/index/client-index";
 import {AuthService} from "../providers/auth/auth.service";
 import {Storage} from "@ionic/storage";
 
+import {AdminIndexMenuSidePage} from "../modules/admin/pages/index2/admin-index-menu-side";
+
 @Component({
     templateUrl: 'app.html'
 })
@@ -32,9 +34,9 @@ export class MyApp {
                     return this.userService.getUser(true).toPromise().then((user)=> {
                         this.storage.set('permissions', JSON.stringify(user.permissions)).then(()=> {
                             if (user['isSuperUser']) {
-                                this.rootPage = AdminIndexPage;
+                                this.rootPage = AdminIndexMenuSidePage;
                             } else {
-                                this.rootPage = ClientIndexPage;
+                                this.rootPage = AdminIndexMenuSidePage;
                             }
                         });
                     })
