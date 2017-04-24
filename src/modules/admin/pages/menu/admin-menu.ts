@@ -12,7 +12,7 @@ export class AdminMenuPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App,
                 private authService: AuthService, private storage: Storage) {
-
+               
     }
 
     logout() {

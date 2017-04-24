@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform , App} from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import {LoginPage} from "../../../auth/pages/login/login";
+import {Storage} from "@ionic/storage";
 
 //import { TabsPage } from '../pages/tabs/tabs';
 
@@ -8,6 +10,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AccountPage } from '../pages/account/account';
 
 import {AdminDashboardPage} from "../dashboard/admin-dashboard";
+import {AuthService} from "../../../../providers/auth/auth.service";
 
 @Component({
   selector: 'page-admin-index-menu-side',
@@ -20,13 +23,13 @@ export class AdminIndexMenuSidePage {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, private authService: AuthService, public appCtrl: App, private storage: Storage) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Homepage', component: AdminDashboardPage },
-      { title: 'Settings', component: AdminDashboardPage },
+      { title: 'Homepage', component: AdminDashboardPage,},
+      { title: 'Settings', component: AdminDashboardPage},
       { title: 'Account', component: AdminDashboardPage }
   	];
 
@@ -37,6 +40,14 @@ export class AdminIndexMenuSidePage {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  logout() {
+        this.authService.logout().subscribe((data)=> {
+            this.storage.remove('token');
+            this.storage.remove('permissions');
+            this.appCtrl.getRootNav().setRoot(LoginPage);
+        }, (error)=>console.log(error))
+    }
 
   initializeApp() {
     this.platform.ready().then(() => {
